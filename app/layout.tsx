@@ -4,7 +4,7 @@ import { StructuredData } from "@/lib/components/StructuredData"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXTAUTH_URL || 'https://mefood.app'),
+  metadataBase: new URL(process.env.NEXTAUTH_URL || 'zerofood-woad.vercel.app'),
   title: "ZeroFood - Restaurant Management System",
   description: "Modern table management and ordering system for small to medium restaurants. Complete solution for restaurant operations, menu management, and customer service.",
   keywords: "restaurant management, table booking, menu management, ordering system, restaurant POS, table management system",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
         url: "/zero.png",
         width: 1200,
         height: 630,
-        alt: "ZeroFood Restaurant Management System",
+        alt: "",
       },
     ],
     locale: "en_US",
