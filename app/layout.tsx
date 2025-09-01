@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: "MeFood - Restaurant Management System",
     description: "Modern table management and ordering system for small to medium restaurants. Complete solution for restaurant operations, menu management, and customer service.",
-    url: "https://mefood.app",
-    siteName: "MeFood",
+    url: "https://zerofood-woad.vercel.app/",
+    siteName: "ZeroFood",
     images: [
       {
         url: "/zero.png",
