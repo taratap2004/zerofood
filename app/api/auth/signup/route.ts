@@ -58,7 +58,6 @@ import { NextRequest, NextResponse } from "next/server"
 import { PrismaClient } from "@prisma/client"
 import bcrypt from "bcryptjs"
 
-// Prisma instance with better config for Vercel
 const prisma = new PrismaClient({
   datasourceUrl: process.env.DATABASE_URL,
 })
@@ -68,10 +67,12 @@ export async function POST(request: NextRequest) {
     const body = await request.json()
     const { ownerName, email, password, restaurantName } = body
 
-    // Validation
-    if (!ownerName?.trim() || !email?.trim() || !password?.trim() || !restaurantName?.trim()) {
+    console.log('Signup attempt:', { email, hasPassword: !!password, restaurantName })
+
+    // Basic validation
+    if (!email?.trim() || !password?.trim()) {
       return NextResponse.json(
-        { error: "กรุณากรอกข้อมูลให้ครบถ้วน" },
+        { error: "กรุณากรอกอีเมลและรหัสผ่าน" },
         { status: 400 }
       )
     }
@@ -108,28 +109,31 @@ export async function POST(request: NextRequest) {
     // Hash password
     const hashedPassword = await bcrypt.hash(password, 12)
 
-    // Create user
+    // Create user - make fields optional as per schema
+    const userData = {
+      email: email.toLowerCase().trim(),
+      password: hashedPassword,
+      ownerName: ownerName?.trim() || null,
+      restaurantName: restaurantName?.trim() || null,
+      restaurantEmail: email.toLowerCase().trim(),
+      isRestaurantActive: true
+    }
+
+    console.log('Creating user with data:', { ...userData, password: '[HIDDEN]' })
+
     const user = await prisma.user.create({
-      data: {
-        ownerName: ownerName.trim(),
-        email: email.toLowerCase().trim(),
-        password: hashedPassword,
-        restaurantName: restaurantName.trim(),
-        restaurantDescription: null,
-        restaurantAddress: null,
-        restaurantPhone: null,
-        restaurantEmail: email.toLowerCase().trim(),
-        isRestaurantActive: true
-      },
+      data: userData,
       select: {
         id: true,
-        ownerName: true,
         email: true,
+        ownerName: true,
         restaurantName: true,
         isRestaurantActive: true,
         createdAt: true
       }
     })
+
+    console.log('User created successfully:', user)
 
     return NextResponse.json(
       {
@@ -140,7 +144,11 @@ export async function POST(request: NextRequest) {
     )
 
   } catch (error: any) {
-    console.error('Signup error:', error)
+    console.error('Signup error details:', {
+      message: error.message,
+      code: error.code,
+      stack: error.stack
+    })
 
     // Prisma specific errors
     if (error.code === 'P2002') {
@@ -157,12 +165,22 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    // Connection timeout
+    if (error.message.includes('timeout') || error.message.includes('ETIMEDOUT')) {
+      return NextResponse.json(
+        { error: "เชื่อมต่อฐานข้อมูลหมดเวลา กรุณาลองใหม่" },
+        { status: 503 }
+      )
+    }
+
     return NextResponse.json(
-      { error: "เกิดข้อผิดพลาดระบบ กรุณาลองใหม่อีกครั้ง" },
+      {
+        error: "เกิดข้อผิดพลาดระบบ กรุณาลองใหม่อีกครั้ง",
+        details: process.env.NODE_ENV === 'development' ? error.message : undefined
+      },
       { status: 500 }
     )
   } finally {
-    // ปิดการเชื่อมต่อเมื่อเสร็จสิ้น
     await prisma.$disconnect()
   }
 }
