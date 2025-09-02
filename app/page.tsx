@@ -59,7 +59,7 @@ export default function Home() {
       <Container maxWidth="lg" sx={{ mt: { xs: 2, md: 4 }, mb: { xs: 2, md: 4 }, px: { xs: 2, sm: 3, md: 4 } }}>
         <Box sx={{ textAlign: 'center', mb: { xs: 3, md: 4 } }}>
           {/* Logo Display */}
-          <Box sx={{ mb: { xs: 2, md: 3 }, display: 'flex', justifyContent: 'center' }}>
+          {/* <Box sx={{ mb: { xs: 2, md: 3 }, display: 'flex', justifyContent: 'center' }}>
             <Image
               src="/zero.png"
               alt="ZeroFood Logo"
@@ -68,7 +68,32 @@ export default function Home() {
               style={{ objectFit: 'contain' }}
               priority
             />
+          </Box> */}
+          <Box
+            sx={{
+              mb: { xs: 2, md: 3 },
+              display: "flex",
+              justifyContent: "center",
+              "& img": {
+                transition: "transform 0.4s ease, filter 0.4s ease",
+              },
+              "& img:hover": {
+                transform: "scale(1.15) rotate(10deg)", // ขยาย + เอียง
+                filter: "drop-shadow(0 8px 12px rgba(0,0,0,0.3)) brightness(1.1)", // เงา + สว่าง
+              },
+            }}
+          >
+            <Image
+              src="/zero.png"
+              alt="ZeroFood Logo"
+              width={300}
+              height={300}
+              style={{ objectFit: "contain" }}
+              priority
+            />
           </Box>
+
+
 
           <Typography
             variant="h2"

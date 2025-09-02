@@ -400,104 +400,249 @@
 
 // export default enhancedTheme
 
+// import { createTheme } from '@mui/material/styles'
+
+// // ❤️ Restaurant App Theme — Red
+// const theme = createTheme({
+//   palette: {
+//     mode: 'light',
+
+//     // Main Brand Color
+
+
+//     primary: {
+//       main: '#f44336',   // 🔴 Red 500 - Navbar, main buttons
+//       dark: '#c62828',   // 🔴 Red 800 - Headings, icons
+//       light: '#ff7961',  // 🔴 Red 300 - Hover states
+//       contrastText: '#ffffff', // ข้อความสีขาวบนปุ่มแดง
+//     },
+
+//     // Supporting Colors
+//     secondary: {
+//       main: '#ff7961', // 🔴 Red 300 - CTA buttons, highlights
+//       dark: '#c62828',
+//       light: '#ffcdd2',
+//       contrastText: '#ffffff',
+//     },
+
+//     // Additional custom colors
+//     success: {
+//       main: '#c78181ff',
+//       dark: '#388e3c',
+//       light: '#e8f5e9',
+//     },
+
+//     warning: {
+//       main: '#ffb74d',
+//       dark: '#f57c00',
+//       light: '#fff3e0',
+//     },
+
+//     error: {
+//       main: '#e53935', // 🔴 Red 600
+//       dark: '#b71c1c',
+//       light: '#ffcdd2',
+//     },
+
+//     info: {
+//       main: '#f44336', // ใช้สีแดงเป็น info เช่นกัน
+//       dark: '#c62828',
+//       light: '#ffebee',
+//     },
+
+//     // Background colors
+//     background: {
+//       default: '#fffafa', // Off-white with red tint
+//       paper: '#ffffff',
+//     },
+
+//     // Custom greys (ไว้ใช้พื้นหลัง)
+//     grey: {
+//       50: '#ffebee',
+//       100: '#ffcdd2',
+//       200: '#ef9a9a',
+//       300: '#e57373',
+//       400: '#ef5350',
+//       500: '#f44336',
+//       600: '#e53935',
+//       700: '#d32f2f',
+//       800: '#c62828',
+//       900: '#b71c1c',
+//     },
+
+//     // Text colors
+//     text: {
+//       primary: '#212121',   // Almost black
+//       secondary: '#424242', // Gray dark text
+//     },
+
+//     // Action colors
+//     action: {
+//       hover: 'rgba(244, 67, 54, 0.08)',
+//       selected: 'rgba(244, 67, 54, 0.16)',
+//       disabled: 'rgba(0, 0, 0, 0.26)',
+//       disabledBackground: 'rgba(0, 0, 0, 0.12)',
+//     },
+
+//     // Divider
+//     divider: 'rgba(244, 67, 54, 0.12)',
+//   },
+
+//   // Typography
+//   typography: {
+//     fontFamily: '"Sarabun", "Inter", "Roboto", "Helvetica", "Arial", sans-serif',
+
+//     h1: { fontWeight: 700, color: '#c62828' },
+//     h2: { fontWeight: 700, color: '#c62828' },
+//     h3: { fontWeight: 600, color: '#c62828' },
+//     h4: { fontWeight: 600, color: '#c62828' },
+//     h5: { fontWeight: 600, color: '#c62828' },
+//     h6: { fontWeight: 600, color: '#c62828' },
+
+//     subtitle1: { color: '#212121' },
+//     subtitle2: { color: '#424242' },
+//     body1: { color: '#212121' },
+//     body2: { color: '#424242' },
+
+//     button: {
+//       fontWeight: 600,
+//       textTransform: 'none',
+//     },
+//     caption: { color: '#424242' },
+//     overline: { color: '#424242', fontWeight: 600, textTransform: 'uppercase' },
+//   },
+
+//   shape: { borderRadius: 12 },
+//   spacing: 8,
+// })
+
+// // Component overrides
+// const enhancedTheme = createTheme(theme, {
+//   components: {
+//     MuiAppBar: {
+//       styleOverrides: {
+//         root: {
+//           backgroundColor: '#ff5c56ff', // 🔴 Navbar
+//           color: '#ffffff',
+//           boxShadow: '0px 2px 8px rgba(244, 67, 54, 0.16)',
+//         },
+//       },
+//     },
+//     MuiButton: {
+//       styleOverrides: {
+//         root: { borderRadius: 12, fontWeight: 600, textTransform: 'none', boxShadow: 'none' },
+//         containedPrimary: {
+//           backgroundColor: '#f44336',
+//           color: '#ffffff',
+//           '&:hover': { backgroundColor: '#c62828' },
+//         },
+//         containedSecondary: {
+//           backgroundColor: '#ff7961',
+//           color: '#ffffff',
+//           '&:hover': { backgroundColor: '#e57373' },
+//         },
+//       },
+//     },
+//   },
+// })
+
+// export default enhancedTheme
 import { createTheme } from '@mui/material/styles'
 
-// ❤️ Restaurant App Theme — Red
+// 💛 Restaurant App Theme — Yellow
 const theme = createTheme({
   palette: {
     mode: 'light',
 
     // Main Brand Color
-
-
     primary: {
-      main: '#f44336',   // 🔴 Red 500 - Navbar, main buttons
-      dark: '#c62828',   // 🔴 Red 800 - Headings, icons
-      light: '#ff7961',  // 🔴 Red 300 - Hover states
-      contrastText: '#ffffff', // ข้อความสีขาวบนปุ่มแดง
+      main: '#FBC02D',   // 💛 Yellow 700 - Navbar, main buttons
+      dark: '#F57F17',   // 💛 Yellow 900 - Headings, icons
+      light: '#FFF176',  // 💛 Yellow 400 - Hover states
+      contrastText: '#000000', // ข้อความสีดำบนปุ่มเหลือง
     },
 
     // Supporting Colors
     secondary: {
-      main: '#ff7961', // 🔴 Red 300 - CTA buttons, highlights
-      dark: '#c62828',
-      light: '#ffcdd2',
-      contrastText: '#ffffff',
+      main: '#FFD54F', // 💛 Yellow 600 - CTA buttons, highlights
+      dark: '#FFA000',
+      light: '#FFF8E1',
+      contrastText: '#000000',
     },
 
     // Additional custom colors
     success: {
-      main: '#c78181ff',
-      dark: '#388e3c',
-      light: '#e8f5e9',
+      main: '#FBC02D',
+      dark: '#F57F17',
+      light: '#FFF59D',
     },
 
     warning: {
-      main: '#ffb74d',
-      dark: '#f57c00',
-      light: '#fff3e0',
+      main: '#FFB300',
+      dark: '#F57C00',
+      light: '#FFE082',
     },
 
     error: {
-      main: '#e53935', // 🔴 Red 600
-      dark: '#b71c1c',
-      light: '#ffcdd2',
+      main: '#F44336',
+      dark: '#C62828',
+      light: '#FFCDD2',
     },
 
     info: {
-      main: '#f44336', // ใช้สีแดงเป็น info เช่นกัน
-      dark: '#c62828',
-      light: '#ffebee',
+      main: '#FDD835', // ใช้เหลืองเป็น info เช่นกัน
+      dark: '#F57F17',
+      light: '#FFF9C4',
     },
 
     // Background colors
     background: {
-      default: '#fffafa', // Off-white with red tint
-      paper: '#ffffff',
+      default: '#FFF9C4', // เหลืองอ่อน
+      paper: '#FFFFFF',
     },
 
-    // Custom greys (ไว้ใช้พื้นหลัง)
+    // Custom yellows (แทน greys)
     grey: {
-      50: '#ffebee',
-      100: '#ffcdd2',
-      200: '#ef9a9a',
-      300: '#e57373',
-      400: '#ef5350',
-      500: '#f44336',
-      600: '#e53935',
-      700: '#d32f2f',
-      800: '#c62828',
-      900: '#b71c1c',
+      50: '#FFFDE7',
+      100: '#FFF9C4',
+      200: '#FFF59D',
+      300: '#FFF176',
+      400: '#FFEE58',
+      500: '#FFEB3B',
+      600: '#FDD835',
+      700: '#FBC02D',
+      800: '#F9A825',
+      900: '#F57F17',
     },
 
     // Text colors
     text: {
       primary: '#212121',   // Almost black
-      secondary: '#424242', // Gray dark text
+      secondary: '#424242', // Dark gray
     },
 
     // Action colors
     action: {
-      hover: 'rgba(244, 67, 54, 0.08)',
-      selected: 'rgba(244, 67, 54, 0.16)',
+      hover: 'rgba(251, 192, 45, 0.08)',
+      selected: 'rgba(251, 192, 45, 0.16)',
       disabled: 'rgba(0, 0, 0, 0.26)',
       disabledBackground: 'rgba(0, 0, 0, 0.12)',
     },
 
     // Divider
-    divider: 'rgba(244, 67, 54, 0.12)',
+    divider: 'rgba(251, 192, 45, 0.12)',
   },
 
   // Typography
   typography: {
     fontFamily: '"Sarabun", "Inter", "Roboto", "Helvetica", "Arial", sans-serif',
 
-    h1: { fontWeight: 700, color: '#c62828' },
-    h2: { fontWeight: 700, color: '#c62828' },
-    h3: { fontWeight: 600, color: '#c62828' },
-    h4: { fontWeight: 600, color: '#c62828' },
-    h5: { fontWeight: 600, color: '#c62828' },
-    h6: { fontWeight: 600, color: '#c62828' },
+    h1: { fontWeight: 700, color: '#F57F17' },
+    h2: { fontWeight: 700, color: '#F57F17' },
+    h3: { fontWeight: 600, color: '#F57F17' },
+    h4: { fontWeight: 600, color: '#F57F17' },
+    h5: { fontWeight: 600, color: '#F57F17' },
+    h6: { fontWeight: 600, color: '#F57F17' },
 
     subtitle1: { color: '#212121' },
     subtitle2: { color: '#424242' },
@@ -522,9 +667,9 @@ const enhancedTheme = createTheme(theme, {
     MuiAppBar: {
       styleOverrides: {
         root: {
-          backgroundColor: '#ff5c56ff', // 🔴 Navbar
-          color: '#ffffff',
-          boxShadow: '0px 2px 8px rgba(244, 67, 54, 0.16)',
+          backgroundColor: '#ffb700ff', // 💛 Navbar
+          color: '#000000',
+          boxShadow: '0px 2px 8px rgba(251, 192, 45, 0.16)',
         },
       },
     },
@@ -532,14 +677,14 @@ const enhancedTheme = createTheme(theme, {
       styleOverrides: {
         root: { borderRadius: 12, fontWeight: 600, textTransform: 'none', boxShadow: 'none' },
         containedPrimary: {
-          backgroundColor: '#f44336',
-          color: '#ffffff',
-          '&:hover': { backgroundColor: '#c62828' },
+          backgroundColor: '#FBC02D',
+          color: '#000000',
+          '&:hover': { backgroundColor: '#F57F17' },
         },
         containedSecondary: {
-          backgroundColor: '#ff7961',
-          color: '#ffffff',
-          '&:hover': { backgroundColor: '#e57373' },
+          backgroundColor: '#FFD54F',
+          color: '#000000',
+          '&:hover': { backgroundColor: '#FBC02D' },
         },
       },
     },
@@ -547,3 +692,4 @@ const enhancedTheme = createTheme(theme, {
 })
 
 export default enhancedTheme
+
