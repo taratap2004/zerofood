@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 import 'react-grid-layout/css/styles.css'
 import 'react-resizable/css/styles.css'
 
+
 interface Table {
   id: string
   number: string
@@ -51,12 +52,12 @@ interface FloorPlanProps {
   onCheckoutClick?: (tableId: string, sessionId: string) => void
 }
 
-export function FloorPlan({ 
-  tables, 
-  onLayoutChange, 
-  editable = false, 
-  onSave, 
-  onEditTable: _onEditTable, 
+export function FloorPlan({
+  tables,
+  onLayoutChange,
+  editable = false,
+  onSave,
+  onEditTable: _onEditTable,
   onDeleteTable: _onDeleteTable,
   onTableClick,
   selectedTableId,
@@ -94,7 +95,7 @@ export function FloorPlan({
   const handleLayoutChange = (newLayout: Layout[]) => {
     setLayout(newLayout)
     setIsDirty(true)
-    
+
     if (onLayoutChange) {
       const updatedTables = tables.map(table => {
         const layoutItem = newLayout.find(item => item.i === table.id)
@@ -159,7 +160,7 @@ export function FloorPlan({
   }
 
   return (
-    <Box 
+    <Box
       sx={{ position: 'relative' }}
       onClick={() => setActiveTableActions(null)}
     >
@@ -171,93 +172,93 @@ export function FloorPlan({
           </Typography>
           {showAvailabilityOnly ? (
             <>
-              <Chip 
-                size="small" 
-                label={t('table.available')} 
-                sx={{ 
-                  backgroundColor: 'success.main', 
+              <Chip
+                size="small"
+                label={t('table.available')}
+                sx={{
+                  backgroundColor: 'success.main',
                   color: 'white',
                   fontWeight: 600,
                   height: 24
-                }} 
+                }}
               />
-              <Chip 
-                size="small" 
-                label={t('table.selected')} 
-                sx={{ 
-                  backgroundColor: 'primary.main', 
+              <Chip
+                size="small"
+                label={t('table.selected')}
+                sx={{
+                  backgroundColor: 'primary.main',
                   color: 'white',
                   fontWeight: 600,
                   height: 24
-                }} 
+                }}
               />
             </>
           ) : showOccupancyStatus ? (
             <>
-              <Chip 
-                size="small" 
-                label={t('table.available')} 
-                sx={{ 
-                  backgroundColor: 'grey.300', 
+              <Chip
+                size="small"
+                label={t('table.available')}
+                sx={{
+                  backgroundColor: 'grey.300',
                   color: 'text.primary',
                   fontWeight: 600,
                   height: 24
-                }} 
+                }}
               />
-              <Chip 
-                size="small" 
-                label={t('table.occupied')} 
-                sx={{ 
-                  backgroundColor: 'primary.main', 
+              <Chip
+                size="small"
+                label={t('table.occupied')}
+                sx={{
+                  backgroundColor: 'primary.main',
                   color: 'white',
                   fontWeight: 600,
                   height: 24
-                }} 
+                }}
               />
               {showSeatingMode && (
-                <Chip 
-                  size="small" 
-                  label={t('table.canSeatSelected')} 
-                  sx={{ 
-                    backgroundColor: 'success.main', 
+                <Chip
+                  size="small"
+                  label={t('table.canSeatSelected')}
+                  sx={{
+                    backgroundColor: 'success.main',
                     color: 'white',
                     fontWeight: 600,
                     height: 24
-                  }} 
+                  }}
                 />
               )}
-              <Chip 
-                size="small" 
-                label={t('table.readyForBill')} 
-                sx={{ 
-                  backgroundColor: 'error.main', 
+              <Chip
+                size="small"
+                label={t('table.readyForBill')}
+                sx={{
+                  backgroundColor: 'error.main',
                   color: 'white',
                   fontWeight: 600,
                   height: 24
-                }} 
+                }}
               />
             </>
           ) : (
             <>
-              <Chip 
-                size="small" 
-                label="Active" 
-                sx={{ 
-                  backgroundColor: 'primary.main', 
+              <Chip
+                size="small"
+                label="Active"
+                sx={{
+                  backgroundColor: 'primary.main',
                   color: 'white',
                   fontWeight: 600,
                   height: 24
-                }} 
+                }}
               />
-              <Chip 
-                size="small" 
-                label="Inactive" 
-                sx={{ 
-                  backgroundColor: 'grey.400', 
+              <Chip
+                size="small"
+                label="Inactive"
+                sx={{
+                  backgroundColor: 'grey.400',
                   color: 'white',
                   fontWeight: 600,
                   height: 24
-                }} 
+                }}
               />
             </>
           )}
@@ -268,7 +269,7 @@ export function FloorPlan({
             </Typography>
           </Box>
         </Box>
-        
+
         {editable && (
           <Box sx={{ display: 'flex', gap: 1 }}>
             {!isEditing ? (
@@ -321,10 +322,10 @@ export function FloorPlan({
         )}
       </Box>
 
-      <Paper 
-        elevation={2} 
-        sx={{ 
-          p: 2, 
+      <Paper
+        elevation={2}
+        sx={{
+          p: 2,
           backgroundColor: 'grey.50',
           minHeight: 600,
           position: 'relative',
@@ -337,14 +338,14 @@ export function FloorPlan({
         }}
       >
         {isEditing && (
-          <Chip 
+          <Chip
             label="Drag tables to rearrange • Resize by dragging corners"
             color="primary"
             size="small"
-            sx={{ 
-              position: 'absolute', 
-              top: 8, 
-              left: 8, 
+            sx={{
+              position: 'absolute',
+              top: 8,
+              left: 8,
               zIndex: 10,
               fontWeight: 600
             }}
@@ -371,9 +372,9 @@ export function FloorPlan({
             const session = table.session
             const isBillingReady = session?.status === 'BILLING'
             const canSeatSelected = showSeatingMode && table.isAvailableForSeating
-            
+
             let backgroundColor, borderColor, backgroundGradient
-            
+
             if (isSelected) {
               backgroundColor = 'primary.50'
               borderColor = 'primary.main'
@@ -405,11 +406,11 @@ export function FloorPlan({
             } else {
               backgroundColor = table.isActive ? 'white' : 'grey.100'
               borderColor = table.isActive ? 'primary.main' : 'grey.400'
-              backgroundGradient = table.isActive 
-                ? 'linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)' 
+              backgroundGradient = table.isActive
+                ? 'linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%)'
                 : 'linear-gradient(135deg, #e0e0e0 0%, #bdbdbd 100%)'
             }
-            
+
             return (
               <Paper
                 key={table.id}
@@ -417,11 +418,11 @@ export function FloorPlan({
                 onClick={(e) => {
                   e.stopPropagation()
                   if (isEditing) return
-                  
+
                   // If table is occupied and we have action handlers, toggle action buttons
                   if (showOccupancyStatus && isOccupied && session && onOrderClick && onBillClick && onCheckoutClick) {
                     setActiveTableActions(activeTableActions === table.id ? null : table.id)
-                  } 
+                  }
                   // Otherwise use the normal table click handler
                   else if (onTableClick) {
                     onTableClick(table.id)
@@ -436,27 +437,27 @@ export function FloorPlan({
                   border: '3px solid',
                   borderColor,
                   borderRadius: 2,
-                  cursor: isEditing 
-                    ? 'move' 
-                    : (onTableClick && (canSeatSelected || !showSeatingMode || isOccupied)) 
-                      ? 'pointer' 
-                      : canSeatSelected 
-                        ? 'pointer' 
+                  cursor: isEditing
+                    ? 'move'
+                    : (onTableClick && (canSeatSelected || !showSeatingMode || isOccupied))
+                      ? 'pointer'
+                      : canSeatSelected
+                        ? 'pointer'
                         : 'default',
                   transition: 'all 0.2s ease',
                   background: backgroundGradient,
                   '&:hover': {
-                    borderColor: isSelected 
-                      ? 'primary.dark' 
-                      : isAvailable 
+                    borderColor: isSelected
+                      ? 'primary.dark'
+                      : isAvailable
                         ? 'success.dark'
                         : canSeatSelected
                           ? 'success.dark'
-                        : isBillingReady
-                          ? 'error.dark'
-                          : isOccupied
-                            ? 'primary.dark'
-                            : table.isActive ? 'primary.dark' : 'grey.500',
+                          : isBillingReady
+                            ? 'error.dark'
+                            : isOccupied
+                              ? 'primary.dark'
+                              : table.isActive ? 'primary.dark' : 'grey.500',
                     boxShadow: isSelected ? 8 : canSeatSelected ? 8 : 6,
                     transform: !isEditing ? 'scale(1.05)' : 'none',
                     opacity: showSeatingMode && !canSeatSelected && !isOccupied ? 0.6 : 1
@@ -468,33 +469,33 @@ export function FloorPlan({
                   boxShadow: isSelected ? `0 0 0 2px ${isAvailable ? '#4caf50' : '#2196f3'}` : undefined
                 }}
               >
-                <Typography 
-                  variant="h6" 
-                  sx={{ 
+                <Typography
+                  variant="h6"
+                  sx={{
                     fontWeight: 700,
-                    color: isSelected 
-                      ? 'primary.dark' 
-                      : isAvailable 
+                    color: isSelected
+                      ? 'primary.dark'
+                      : isAvailable
                         ? 'success.dark'
                         : canSeatSelected
-                          ? 'success.dark' 
-                        : isBillingReady
-                          ? 'error.dark'
-                          : isOccupied
-                            ? 'primary.dark'
-                            : table.isActive ? 'primary.dark' : 'text.secondary',
+                          ? 'success.dark'
+                          : isBillingReady
+                            ? 'error.dark'
+                            : isOccupied
+                              ? 'primary.dark'
+                              : table.isActive ? 'primary.dark' : 'text.secondary',
                     fontSize: { xs: '0.875rem', sm: '1rem', md: '1.25rem' }
                   }}
                 >
                   Table {table.number}
                 </Typography>
-                
+
                 {/* Show customer info if occupied, otherwise show table info */}
                 {showOccupancyStatus && session ? (
                   <Box sx={{ textAlign: 'center', mt: 0.5 }}>
-                    <Typography 
-                      variant="body2" 
-                      sx={{ 
+                    <Typography
+                      variant="body2"
+                      sx={{
                         fontWeight: 600,
                         fontSize: { xs: '0.75rem', sm: '0.875rem' },
                         color: isBillingReady ? 'error.dark' : 'primary.dark'
@@ -502,9 +503,9 @@ export function FloorPlan({
                     >
                       {session.customerName || t('table.walkInCustomer')}
                     </Typography>
-                    <Typography 
-                      variant="caption" 
-                      sx={{ 
+                    <Typography
+                      variant="caption"
+                      sx={{
                         fontSize: { xs: '0.625rem', sm: '0.75rem' },
                         color: 'text.secondary'
                       }}
@@ -512,9 +513,9 @@ export function FloorPlan({
                       {session.partySize} guests • {session.status}
                     </Typography>
                     {onOrderClick && onBillClick && onCheckoutClick && (
-                      <Typography 
-                        variant="caption" 
-                        sx={{ 
+                      <Typography
+                        variant="caption"
+                        sx={{
                           fontSize: { xs: '0.625rem', sm: '0.7rem' },
                           color: 'primary.main',
                           fontWeight: 600,
@@ -529,9 +530,9 @@ export function FloorPlan({
                 ) : (
                   <>
                     {table.name && (
-                      <Typography 
-                        variant="caption" 
-                        sx={{ 
+                      <Typography
+                        variant="caption"
+                        sx={{
                           color: 'text.secondary',
                           fontSize: { xs: '0.625rem', sm: '0.75rem' }
                         }}
@@ -539,18 +540,18 @@ export function FloorPlan({
                         {table.name}
                       </Typography>
                     )}
-                    
-                    <Box sx={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      gap: 0.5, 
+
+                    <Box sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 0.5,
                       mt: 'auto',
                       color: table.isActive ? 'text.secondary' : 'text.disabled'
                     }}>
                       <People sx={{ fontSize: { xs: 12, sm: 14, md: 16 } }} />
-                      <Typography 
-                        variant="body2" 
-                        sx={{ 
+                      <Typography
+                        variant="body2"
+                        sx={{
                           fontSize: { xs: '0.625rem', sm: '0.75rem' },
                           fontWeight: isSelected ? 600 : 400
                         }}
@@ -563,11 +564,11 @@ export function FloorPlan({
 
                 {/* Status chips */}
                 {showOccupancyStatus && session && (
-                  <Chip 
+                  <Chip
                     label={session.status}
                     size="small"
                     color={getStatusColor(session.status) as any}
-                    sx={{ 
+                    sx={{
                       position: 'absolute',
                       top: 4,
                       right: 4,
@@ -579,11 +580,11 @@ export function FloorPlan({
                 )}
 
                 {canSeatSelected && selectedCustomer && (
-                  <Chip 
+                  <Chip
                     label={`Can Seat ${selectedCustomer.partySize}`}
                     size="small"
                     color="success"
-                    sx={{ 
+                    sx={{
                       position: 'absolute',
                       top: 4,
                       right: 4,
@@ -593,13 +594,13 @@ export function FloorPlan({
                     }}
                   />
                 )}
-                
+
                 {isSelected && showAvailabilityOnly && (
-                  <Chip 
+                  <Chip
                     label={t('table.selected')}
                     size="small"
                     color="primary"
-                    sx={{ 
+                    sx={{
                       position: 'absolute',
                       top: 4,
                       right: 4,
@@ -609,12 +610,12 @@ export function FloorPlan({
                     }}
                   />
                 )}
-                
+
                 {!table.isActive && !showAvailabilityOnly && !showOccupancyStatus && (
-                  <Chip 
+                  <Chip
                     label="Inactive"
                     size="small"
-                    sx={{ 
+                    sx={{
                       position: 'absolute',
                       top: 4,
                       right: 4,
@@ -626,8 +627,8 @@ export function FloorPlan({
 
                 {/* Action Buttons Overlay for Occupied Tables */}
                 {showOccupancyStatus && isOccupied && session && onOrderClick && onBillClick && onCheckoutClick && activeTableActions === table.id && (
-                  <Box 
-                    sx={{ 
+                  <Box
+                    sx={{
                       position: 'absolute',
                       top: 0,
                       left: 0,
@@ -652,7 +653,7 @@ export function FloorPlan({
                         setActiveTableActions(null)
                         onOrderClick(table.id)
                       }}
-                      sx={{ 
+                      sx={{
                         minWidth: 80,
                         fontSize: '0.75rem',
                         height: 28,
@@ -675,7 +676,7 @@ export function FloorPlan({
                         setActiveTableActions(null)
                         onBillClick(table.id)
                       }}
-                      sx={{ 
+                      sx={{
                         minWidth: 80,
                         fontSize: '0.75rem',
                         height: 28,
@@ -698,7 +699,7 @@ export function FloorPlan({
                         setActiveTableActions(null)
                         onCheckoutClick(table.id, session.id)
                       }}
-                      sx={{ 
+                      sx={{
                         minWidth: 80,
                         fontSize: '0.75rem',
                         height: 28,
