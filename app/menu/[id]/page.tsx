@@ -662,7 +662,6 @@ export default function PublicMenuPage() {
               fontStyle: 'italic'
             }}
           >
-            © 2025 MeFood. Built by Karn Yongsiriwit.
           </Typography>
         </Box>
       </Box>
